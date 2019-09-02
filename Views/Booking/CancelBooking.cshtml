@@ -1,0 +1,59 @@
+﻿@model MovieTicketBooking.Models.MovieInfo
+
+@{
+    ViewData["Title"] = "Cancel";
+}
+
+<h2>Cancel</h2>
+@{
+    <h3>
+        @Html.ActionLink("Logout", "Logout","User")
+    </h3>
+}
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>MovieDetails</h4>
+    <hr />
+    <form asp-action="CancelBooking">
+        <dl class="dl-horizontal">
+
+            <dt>
+                @Html.DisplayNameFor(model => model.MovieName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.MovieName)
+                @Html.HiddenFor(model => model.MovieName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Date)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Date)
+                @Html.HiddenFor(model => model.Date)
+
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Time)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Time)
+                @Html.HiddenFor(model => model.Time)
+
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Seat)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Seat)
+                @Html.HiddenFor(model => model.Seat)
+                @Html.HiddenFor(model => model.BookID)
+
+
+            </dd>
+        </dl>
+        <div class="form-group">
+            <input type="submit" value="Cancel Tickets" class="btn btn-default" /> |
+            <a asp-action="../">Back to Movies</a>
+        </div>
+    </form>
+</div>

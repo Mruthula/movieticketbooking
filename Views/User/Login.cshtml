@@ -1,0 +1,59 @@
+﻿@model MovieTicketBooking.Models.UserInfo
+
+@{
+    ViewData["Title"] = "Login";
+}
+@{
+    int id =Convert.ToInt32(ViewData["message"]);
+
+}
+<h2>Login</h2>
+<script>
+    var id = sessionStorage.TimeID;
+    var seat = sessionStorage.MovieName;
+</script>
+
+
+<h4>UserDetails</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Login">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" required/>
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" required/>
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div clss="form-error">
+                @if (@ViewBag.NotValidUser != null)
+                {
+
+                <p style="color:red">@ViewBag.NotValidUser</p>
+                }
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Login" class="btn btn-default" />
+            </div>
+            <div>
+                @{
+                        <label>New Customer?</label>
+                        @Html.ActionLink("SignUp", "SignUp","User")
+                }
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="../">Back to List</a>
+    @* @{
+        @Html.ActionLink("Back", "LoginOrSignUp", new { id = sessionStorage.TimeID, seat = sessionStorage.MovieName })
+        }*@
+</div>
+

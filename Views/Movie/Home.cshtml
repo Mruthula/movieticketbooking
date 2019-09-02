@@ -1,0 +1,74 @@
+﻿@model IEnumerable<MovieTicketBooking.Models.MovieInfo>
+
+@{
+    ViewData["Title"] = "Home";
+}
+@{
+    int logged = Convert.ToInt32(ViewData["message"]);
+
+}
+@{
+    @if (logged == 0)
+    {
+        <h3>
+            <tr>
+                @Html.ActionLink("Login", "Login","User")
+            </tr>
+            <tr>
+                @Html.ActionLink("SignUp", "SignUp","User")
+            </tr>
+        </h3>
+    }
+    else
+    {
+        <h3>
+            <tr>
+                 @Html.ActionLink("Logout","Logout","User")
+            </tr>
+                                                    
+            <tr>
+                @Html.ActionLink("Cancel Booking", "BookHistory","Booking")
+            </tr>
+        </h3>
+    }
+}
+
+<h2>Movies</h2>
+Select date
+<tr></tr>
+@using (Html.BeginForm("MovieOnDate", "Movie", FormMethod.Post))
+{
+    <input type="date" value="Select Date" name="date" required>
+    <button type="submit">Search</button>
+}
+
+
+<table class="table">
+    <tbody>
+        <tr>
+            @foreach (var item in Model)
+            {
+                <td>
+                    <img src="~/images/@Url.Content(item.Pic)" style="height:200px;width:200px;" />
+                </td>
+            }
+        </tr>
+        <tr>
+            @foreach (var item in Model)
+            {
+                <td>
+                    @Html.ActionLink(Convert.ToString(item.MovieName), "MovieDetails","Movie", new { id = item.MovieID })
+                </td>
+
+            }
+        </tr>
+        <tr>
+            @foreach (var item in Model)
+            {
+                <td>
+                    @Html.ActionLink("Select Movie", "ChooseDate","Movie", new { id = item.MovieID, name = item.MovieName })
+                </td>
+            }
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,42 @@
+﻿@model MovieTicketBooking.Models.UserInfo
+
+@{
+    ViewData["Title"] = "SignUp";
+}
+
+<h2>SignUp</h2>
+
+<h4>UserDetails</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="SignUp">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" required />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="age" class="control-label"></label>
+                <input asp-for="age" class="form-control" required/>
+                <span asp-validation-for="age" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="mobile" class="control-label"></label>
+                <input asp-for="mobile" class="form-control" maxlength="10" minlength="10" required/>
+                <span asp-validation-for="mobile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" minlength="8" required/>
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="SignUp" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
